@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,18 +37,22 @@ public class MainActivity extends AppCompatActivity {
 //                    Intent i = new Intent(MainActivity.this, SecondFragment.class);
 //                    startActivity(i);
 
-//                NavHostFragment.findNavController(null)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                NavHostFragment.findNavController(null)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
 
-                Snackbar.make(view, "Email notifications coming soon!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Email notifications coming soon!", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
                 }
                 catch (Exception e) {
                     Log.v("M", e.getMessage());
                 }
             }
         });
+        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        TextView text = new TextView(this);
+        text.setLayoutParams(lparams);
+        text.setText("testerrrr");
     }
 
     @Override
