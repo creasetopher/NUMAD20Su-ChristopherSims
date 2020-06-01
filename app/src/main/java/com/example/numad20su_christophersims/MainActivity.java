@@ -27,32 +27,35 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                try {
-
-//                    Intent i = new Intent(MainActivity.this, SecondFragment.class);
-//                    startActivity(i);
-
-                NavHostFragment.findNavController(null)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-
-//                Snackbar.make(view, "Email notifications coming soon!", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                }
-                catch (Exception e) {
-                    Log.v("M", e.getMessage());
-                }
-            }
-        });
-        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        TextView text = new TextView(this);
-        text.setLayoutParams(lparams);
-        text.setText("testerrrr");
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                try {
+//
+////                    Intent i = new Intent(MainActivity.this, SecondFragment.class);
+////                    startActivity(i);
+//
+//                NavHostFragment.findNavController(null)
+//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+//
+////                Snackbar.make(view, "Email notifications coming soon!", Snackbar.LENGTH_LONG)
+////                        .setAction("Action", null).show();
+//
+//
+//                }
+//
+//                catch (Exception e) {
+//                    Log.v("M", e.getMessage());
+//                }
+//            }
+//        });
+//        ViewGroup.LayoutParams lparams = new ViewGroup.LayoutParams(
+//                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+//        TextView text = new TextView(this);
+//        text.setLayoutParams(lparams);
+////        text.setText("testerrrr");
     }
 
     @Override

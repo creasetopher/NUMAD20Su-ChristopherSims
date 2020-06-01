@@ -19,8 +19,6 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_second, container, false);
 
     }
@@ -28,6 +26,8 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         final TextView buttonPressedText =  (TextView)getView().findViewById(R.id.button_text_view);
+
+//        view.findViewById(R.id.button_seventh)
 
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +58,7 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 buttonPressedText.setText("Pressed: D");
 
+
             }
         });
 
@@ -72,10 +73,20 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.button_sixth).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonPressedText.setText("Pressed: F");
+                buttonPressedText.setText("Pressed: E");
 
             }
         });
+
+        view.findViewById(R.id.button_seventh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                NavHostFragment.findNavController(SecondFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_ThirdFragment);
+
+            }
+        });
+
 
 
     }
