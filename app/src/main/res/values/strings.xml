@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">NUMAD20Su-ChristopherSims</string>
+    <string name="locationAct">Location Data</string>
+
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

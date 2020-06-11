@@ -1,6 +1,8 @@
 package com.example.numad20su_christophersims;
 
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,11 +49,25 @@ public class LocationActivity extends AppCompatActivity {
             String permissions[],
             int[] grantResults) {
 
-        Log.v("!", "callback called@");
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
     }
+
+//    @Override
+//    public void onConfigurationChanged(Configuration newConfig) {
+//        super.onConfigurationChanged(newConfig);
+//
+//        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            setContentView(R.layout.);
+//        }
+//        else{
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//
+//        }
+
+//    }
 
 
 }
