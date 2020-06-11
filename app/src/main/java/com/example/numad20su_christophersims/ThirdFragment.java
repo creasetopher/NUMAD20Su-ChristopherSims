@@ -140,10 +140,6 @@ public class ThirdFragment extends Fragment {
                                     link = "http://" + link;
 
 
-                                List<String> nameAndLink = new ArrayList<String>();
-                                nameAndLink.add(name);
-                                nameAndLink.add(link);
-
                                 links.add(new LinkGroup(name, link));
 
                                 listAdapter.notifyDataSetChanged();

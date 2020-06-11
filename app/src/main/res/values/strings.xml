@@ -5,8 +5,13 @@
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="third_fragment_label">Third Fragment</string>
+    <string name="location_fragment_label">Location Fragment</string>
+
 
     <string name="next">Next</string>
+    <string name="getLocation">Get Location</string>
+    <string name="fetch">Fetch Location Data</string>
+
     <string name="about">About</string>
     <string name="ButtonA">A</string>
     <string name="ButtonB">B</string>

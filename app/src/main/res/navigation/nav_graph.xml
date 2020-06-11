@@ -15,6 +15,9 @@
             app:destination="@id/SecondFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_FirstFragment_to_LocationFragment"
+            app:destination="@id/LocationFragment" />
     </fragment>
 
     <fragment
@@ -33,4 +36,10 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+
+    <fragment
+        android:id="@+id/LocationFragment"
+        android:name="com.example.numad20su_christophersims.LocationFragment"
+        android:label="@string/location_fragment_label"
+        tools:layout="@layout/fragment_location"/>
 </navigation>
