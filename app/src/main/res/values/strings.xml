@@ -8,6 +8,8 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="third_fragment_label">Third Fragment</string>
     <string name="location_fragment_label">Location Fragment</string>
+    <string name="currency_title">Convert from USD</string>
+
 
 
     <string name="next">Next</string>

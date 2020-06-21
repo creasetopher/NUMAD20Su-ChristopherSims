@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/currency_title"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:text="@string/currency_title"
+        android:textSize="32dp"
+        android:layout_width="match_parent"
+        />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dropdown_label"
+            android:layout_height="50dp"
+            android:text="To"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            />
+            <Spinner
+            android:id="@+id/currency_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

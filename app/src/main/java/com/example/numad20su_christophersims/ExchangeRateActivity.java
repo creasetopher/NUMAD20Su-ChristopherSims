@@ -1,23 +1,21 @@
 package com.example.numad20su_christophersims;
 
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class LocationActivity extends AppCompatActivity {
+public class ExchangeRateActivity extends AppCompatActivity {
+    private Handler textHandler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_currency);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,29 +42,18 @@ public class LocationActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void onRequestPermissionsResult(
-            int requestCode,
-            String permissions[],
-            int[] grantResults) {
 
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
+    class runnableThread implements Runnable {
+        @Override
+        public void run() {
+
+
+        }
     }
 
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//
-//        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE){
-//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//            setContentView(R.layout.);
-//        }
-//        else{
-//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-//
-//        }
 
-//    }
+
 
 
 }
