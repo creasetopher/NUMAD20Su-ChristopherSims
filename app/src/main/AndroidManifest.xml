@@ -33,6 +33,15 @@
             android:configChanges="orientation|screenSize">
         </activity>
 
+        <activity
+            android:name=".ExchangeRateActivity"
+            android:label="@string/currencyAct"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+
+
 
 
 

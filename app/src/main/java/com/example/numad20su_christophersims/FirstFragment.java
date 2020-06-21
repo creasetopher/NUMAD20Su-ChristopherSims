@@ -1,6 +1,7 @@
 package com.example.numad20su_christophersims;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,5 +57,16 @@ public class FirstFragment extends Fragment {
 
             }
         });
+
+        view.findViewById(R.id.button_currency).setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent activityIntent = new Intent(getActivity(), ExchangeRateActivity.class);
+                        getActivity().startActivity(activityIntent);
+                    }
+                }
+        );
     }
 }

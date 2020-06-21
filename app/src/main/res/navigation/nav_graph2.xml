@@ -4,5 +4,12 @@ xmlns:tools="http://schemas.android.com/tools"
 android:id="@+id/nav_graph2"
 app:startDestination="@id/CurrencyFragment">
 
+    <fragment
+        android:id="@+id/CurrencyFragment"
+        android:name="com.example.numad20su_christophersims.CurrencyFragment"
+        android:label="@string/currency_fragment_label"
+        tools:layout="@layout/fragment_currency">
+    </fragment>
+
 
 </navigation>

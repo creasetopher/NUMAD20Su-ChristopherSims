@@ -1,18 +1,23 @@
 <resources>
     <string name="app_name">NUMAD20Su-ChristopherSims</string>
     <string name="locationAct">Location Data</string>
+    <string name="currencyAct">Currency Exchange</string>
+
 
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="third_fragment_label">Third Fragment</string>
+    <string name="currency_fragment_label">Currency Fragment</string>
     <string name="location_fragment_label">Location Fragment</string>
     <string name="currency_title">Convert from USD</string>
 
 
 
     <string name="next">Next</string>
+    <string name="currencyConverter">Currency Converter</string>
+
     <string name="getLocation">Get Location</string>
     <string name="fetch">Fetch Location Data</string>
 
