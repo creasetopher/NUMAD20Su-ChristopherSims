@@ -24,7 +24,6 @@ public class CurrencyService {
 
     public CurrencyService() {
         this.reqUrl = String.format("%s%s?access_key=%s", BASE_URL, ENDPOINT, ACCESS_KEY);
-        Log.d("DFAVDFBSSDfb", this.reqUrl);
     }
 
     public void setResponse(String response) {
@@ -34,14 +33,12 @@ public class CurrencyService {
     public void makeConversionRequest(float amount, String dest,  RequestQueue queue) {
 
         String toCurrency = String.format("&currencies=%s", dest);
-        Log.d("!!!!!!!", toCurrency);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, this.reqUrl + toCurrency,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
                         try {
-                            Log.d("!!!!!!!", response);
                             JSONObject responseObj = new JSONObject(response);
                             JSONObject field = (JSONObject)responseObj.get("quotes");
                             Iterator result = field.keys();
@@ -63,7 +60,6 @@ public class CurrencyService {
             @Override
             public void onErrorResponse(VolleyError error) {
                 CurrencyService.this.setResponse(response);
-                Log.d("!!!!!!!", error.toString());
 
             }
         });

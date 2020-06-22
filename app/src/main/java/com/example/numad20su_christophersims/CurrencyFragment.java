@@ -42,9 +42,10 @@ public class CurrencyFragment extends Fragment {
         dropdown = view.findViewById(R.id.currency_dropdown);
         currencyResultText = (TextView)view.findViewById(R.id.currency_text);
         currencyAmountInput = (EditText) view.findViewById(R.id.currency_input);
+        currencyAmountInput.setText("100");
 
         String[] currencies = new String[]{
-                "Canadian Dollar (CAD",
+                "Canadian Dollar (CAD)",
                 "British Pound Sterling (GBP)",
                 "Japanese Yen (JPY)",
                 "Nigerian Naira (NGN)",
@@ -97,13 +98,9 @@ public class CurrencyFragment extends Fragment {
 
                 currencyService.makeConversionRequest(amount, currencyDest, queue);
                 String conversion = currencyService.getConversion();
-                System.out.println("ENDDDD");
-                System.out.println(conversion);
-
 
                 while (conversion == null) {
                     conversion = currencyService.getConversion();
-                   Log.v("ENDDDD", "conversino still null");
                 }
                 String finalConversion = Float.toString(Float.parseFloat(conversion) * Float.parseFloat(currencyAmountInput.getText().toString()));
                 textHandler.post(() -> currencyResultText.setText(String.format("%s  %s", finalConversion, currencyDest)));
@@ -111,7 +108,6 @@ public class CurrencyFragment extends Fragment {
             }
             catch (Exception e) {
             }
-//                Log.v("from runnable", "running!");
 
         }
     }
