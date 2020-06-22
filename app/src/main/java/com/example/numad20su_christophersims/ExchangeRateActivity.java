@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.numad20su_christophersims.services.CurrencyService;
+
 public class ExchangeRateActivity extends AppCompatActivity {
-    private Handler textHandler = new Handler();
 
 
     @Override
@@ -18,6 +21,10 @@ public class ExchangeRateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_currency);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (savedInstanceState != null) {
+            Spinner s = findViewById(R.id.currency_dropdown);
+            s.setSelection(savedInstanceState.getInt("currency_dropdown", 0));
+        }
 
     }
 
@@ -44,13 +51,7 @@ public class ExchangeRateActivity extends AppCompatActivity {
     }
 
 
-    class runnableThread implements Runnable {
-        @Override
-        public void run() {
 
-
-        }
-    }
 
 
 

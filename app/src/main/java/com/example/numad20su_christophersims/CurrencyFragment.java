@@ -1,18 +1,33 @@
 package com.example.numad20su_christophersims;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+import com.example.numad20su_christophersims.services.CurrencyService;
+
 public class CurrencyFragment extends Fragment {
+    private TextView currencyTextView;
+    private Handler textHandler = new Handler();
+    private Spinner dropdown;
+    private TextView currencyResultText;
+    private EditText currencyAmountInput;
+    private String currencyDest;
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -24,8 +39,10 @@ public class CurrencyFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final Spinner dropdown = view.findViewById(R.id.currency_dropdown);
-        final TextView currencyResultText = (TextView)view.findViewById(R.id.currency_text);
+        dropdown = view.findViewById(R.id.currency_dropdown);
+        currencyResultText = (TextView)view.findViewById(R.id.currency_text);
+        currencyAmountInput = (EditText) view.findViewById(R.id.currency_input);
+
         String[] currencies = new String[]{
                 "Canadian Dollar (CAD",
                 "British Pound Sterling (GBP)",
@@ -40,8 +57,19 @@ public class CurrencyFragment extends Fragment {
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                final Spinner dropdown = parentView.findViewById(R.id.currency_dropdown);
+                final TextView currencyResultText = (TextView)parentView.findViewById(R.id.currency_text);
+
                 String source = (String)dropdown.getItemAtPosition(position);
-                currencyResultText.setText(source);
+                currencyDest = source.substring(
+                        source.indexOf('(') + 1,
+                        source.length() - 1);
+
+
+//                currencyResultText.setText(source);
+                runnableThread runnableThread = new runnableThread();
+                new Thread(runnableThread).start();
+
 
             }
 
@@ -55,5 +83,36 @@ public class CurrencyFragment extends Fragment {
 
 
 
+    }
+
+    class runnableThread implements Runnable {
+        @Override
+        public void run() {
+            RequestQueue queue = Volley.newRequestQueue(getContext());
+
+            CurrencyService currencyService = new CurrencyService();
+
+            try {
+                final float amount = Float.parseFloat(currencyAmountInput.getText().toString());
+
+                currencyService.makeConversionRequest(amount, currencyDest, queue);
+                String conversion = currencyService.getConversion();
+                System.out.println("ENDDDD");
+                System.out.println(conversion);
+
+
+                while (conversion == null) {
+                    conversion = currencyService.getConversion();
+                   Log.v("ENDDDD", "conversino still null");
+                }
+                String finalConversion = Float.toString(Float.parseFloat(conversion) * Float.parseFloat(currencyAmountInput.getText().toString()));
+                textHandler.post(() -> currencyResultText.setText(String.format("%s  %s", finalConversion, currencyDest)));
+
+            }
+            catch (Exception e) {
+            }
+//                Log.v("from runnable", "running!");
+
+        }
     }
 }

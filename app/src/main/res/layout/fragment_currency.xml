@@ -25,6 +25,23 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/currency_input_label"
+            android:layout_height="40dp"
+            android:text="Amount"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            />
+        <EditText
+            android:id="@+id/currency_input"
+            android:inputType="phone"
+            android:layout_height="60dp"
+            android:layout_marginBottom="30dp"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            />
+
         <TextView
             android:id="@+id/dropdown_label"
             android:layout_height="50dp"
@@ -50,7 +67,6 @@
             android:id="@+id/currency_text"
             android:layout_height="match_parent"
             android:textSize="50dp"
-            android:text="hello"
             android:gravity="center"
             android:layout_width="match_parent"
             />
