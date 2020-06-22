@@ -3,6 +3,7 @@ package com.example.numad20su_christophersims;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class CurrencyFragment extends Fragment {
     private TextView currencyResultText;
     private EditText currencyAmountInput;
     private String currencyDest;
+    private String amount;
 
     @Override
     public View onCreateView(
@@ -43,14 +45,16 @@ public class CurrencyFragment extends Fragment {
         currencyResultText = (TextView)view.findViewById(R.id.currency_text);
         currencyAmountInput = (EditText) view.findViewById(R.id.currency_input);
         currencyAmountInput.setText("100");
+        amount = currencyAmountInput.getText().toString();
 
-        String[] currencies = new String[]{
+        String[] currencies = new String[] {
                 "Canadian Dollar (CAD)",
                 "British Pound Sterling (GBP)",
                 "Japanese Yen (JPY)",
                 "Nigerian Naira (NGN)",
                 "New Taiwan Dollar (TWD)",
-                "United States Dollar (USD)"};
+                "United States Dollar (USD)"
+        };
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_dropdown_item,
                 currencies);
@@ -82,6 +86,31 @@ public class CurrencyFragment extends Fragment {
         });
         dropdown.setAdapter(adapter);
 
+        currencyAmountInput.addTextChangedListener(new TextWatcher() {
+            final Spinner dropdown = view.findViewById(R.id.currency_dropdown);
+            final TextView currencyResultText = (TextView)view.findViewById(R.id.currency_text);
+            runnableThread runnableThread = new runnableThread();
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                CurrencyFragment.this.amount = s.toString();
+                new Thread(runnableThread).start();
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String amount = s.toString();
+                CurrencyFragment.this.amount = amount;
+                new Thread(runnableThread).start();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
 
     }
@@ -92,10 +121,10 @@ public class CurrencyFragment extends Fragment {
             RequestQueue queue = Volley.newRequestQueue(getContext());
 
             CurrencyService currencyService = new CurrencyService();
-            float amount = Float.parseFloat(currencyAmountInput.getText().toString());
+            float amount;
 
             try {
-                amount = Float.parseFloat(currencyAmountInput.getText().toString());
+                amount = Float.parseFloat(CurrencyFragment.this.amount);
 
                 currencyService.makeConversionRequest(amount, currencyDest, queue);
                 String conversion = currencyService.getConversion();
