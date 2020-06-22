@@ -92,9 +92,10 @@ public class CurrencyFragment extends Fragment {
             RequestQueue queue = Volley.newRequestQueue(getContext());
 
             CurrencyService currencyService = new CurrencyService();
+            float amount = Float.parseFloat(currencyAmountInput.getText().toString());
 
             try {
-                final float amount = Float.parseFloat(currencyAmountInput.getText().toString());
+                amount = Float.parseFloat(currencyAmountInput.getText().toString());
 
                 currencyService.makeConversionRequest(amount, currencyDest, queue);
                 String conversion = currencyService.getConversion();
@@ -102,11 +103,14 @@ public class CurrencyFragment extends Fragment {
                 while (conversion == null) {
                     conversion = currencyService.getConversion();
                 }
-                String finalConversion = Float.toString(Float.parseFloat(conversion) * Float.parseFloat(currencyAmountInput.getText().toString()));
+                String finalConversion = Float.toString(Float.parseFloat(conversion) * amount);
                 textHandler.post(() -> currencyResultText.setText(String.format("%s  %s", finalConversion, currencyDest)));
 
             }
             catch (Exception e) {
+                textHandler.post(() -> currencyResultText
+                        .setText("Not a valid amount :( /n please enter a monetary value in USD"));
+
             }
 
         }
