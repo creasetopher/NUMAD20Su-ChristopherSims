@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class CurrencyService {
 
-    public static final String ACCESS_KEY = "f2eb3303e03e1076f308c8554eb91a97";
+    public static final String ACCESS_KEY = "f45e53d8cc9a9e8454ed47c1c4dabd29";
     public static final String BASE_URL = "http://api.currencylayer.com/";
     public static final String ENDPOINT = "live";
     private String reqUrl;
